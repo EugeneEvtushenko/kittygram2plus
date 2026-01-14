@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'django_filters',
     'djoser',
     'cats.apps.CatsConfig',
 ]
@@ -143,11 +144,14 @@ REST_FRAMEWORK = {
     'DEFAULT_THROTTLE_RATES': {
         'user': '10000/day',  # Лимит для UserRateThrottle
         'anon': '1000/day',  # Лимит для AnonRateThrottle
-        # Имена (ключи) для scope придумывает разработчик, 
+        # Имена (ключи) для scope придумывает разработчик,
         # в меру собственной фантазии
         'low_request': '1/minute',
-    }
+    },
 
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
+
+    'PAGE_SIZE': 5,
 }
 
 SIMPLE_JWT = {
